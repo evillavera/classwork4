@@ -1,4 +1,4 @@
-package intro;//new changes made 9/12/17 finish work
+package intro;//new changes made 9/12/17 finish work Erik Villavera
 
 //this is a class header (class declaration)
 public class IntroMain {
@@ -12,6 +12,9 @@ public class IntroMain {
 		//CodingConventions is the name of the class
 		//conventionsInstance is the variablename/handle
 		CodingConventions conventionsInstance = new CodingConventions();
+		
+		//instance method call
+		conventionsInstance.doStuff();
 	}
 
 }
