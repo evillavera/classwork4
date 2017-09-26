@@ -1,29 +1,28 @@
 package attendance;
 
 public class Student implements Attendee {
-
-	@Override
+	
+	private boolean isHere = false;
+	private String firstName = "Erik";
+	private String lastName = "Villavera";
+	
 	public boolean isPresent() {
-		// TODO Auto-generated method stub
+		if(isHere) {
+			return true;
+		}
 		return false;
 	}
 
-	@Override
 	public void setPresent(boolean present) {
-		// TODO Auto-generated method stub
-		
+		isHere = present;
 	}
 
-	@Override
 	public String getFirstName() {
-		// TODO Auto-generated method stub
-		return null;
+		return firstName;
 	}
 
-	@Override
 	public String getLastName() {
-		// TODO Auto-generated method stub
-		return null;
+		return lastName;
 	}
 
 	@Override
