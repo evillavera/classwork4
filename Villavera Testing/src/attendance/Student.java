@@ -6,6 +6,12 @@ public class Student implements Attendee {
 	private String firstName = "Erik";
 	private String lastName = "Villavera";
 	
+	
+	
+	public Student(String first, String last) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public boolean isPresent() {
 		if(isHere) {
 			return true;
