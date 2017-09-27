@@ -31,7 +31,7 @@ public class Student implements Attendee {
 	public String getLastName() {
 		return lastName;
 	}
-
+//work on case sensitive could use toLowerCase to compare the two
 	public boolean mathces(String first, String last) {
 		if(first == firstName && last == lastName)
 			return true;
