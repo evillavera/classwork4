@@ -56,10 +56,19 @@ public class Student implements Attendee {
 	
 	public String getReportString() {
 		String output = lastName;
+		if(lastName.length() > 20) {
+			String cutOffLastName = lastName.substring(0,17) + "...";
+			output = cutOffLastName;
+		}
 		while(output.length() < 20) {
 			output += " ";
 		}
+		if(firstName.length() > 20) {
+			String cutOffFirstName = firstName.substring(0,17) + "...";
+			output += cutOffFirstName;
+		}else {
 			output += firstName;
+		}
 		while(output.length() < 40) {
 			output += " ";
 		}
