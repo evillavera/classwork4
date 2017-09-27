@@ -3,13 +3,14 @@ package attendance;
 public class Student implements Attendee {
 	
 	private boolean isHere = false;
-	private String firstName = "Erik";
-	private String lastName = "Villavera";
+	private String firstName;
+	private String lastName;
 	
 	
 	
 	public Student(String first, String last) {
-		// TODO Auto-generated constructor stub
+		this.firstName = first;
+		this.lastName = last;
 	}
 
 	public boolean isPresent() {
@@ -31,22 +32,43 @@ public class Student implements Attendee {
 		return lastName;
 	}
 
-	@Override
 	public boolean mathces(String first, String last) {
-		// TODO Auto-generated method stub
+		if(first == firstName && last == lastName)
+			return true;
+		
 		return false;
 	}
 
-	@Override
 	public boolean matches(String last) {
-		// TODO Auto-generated method stub
+		if(last == lastName)
+			return true;
+		
 		return false;
 	}
 
-	@Override
+	//returns three words separated by 20 spaces: 
+		//at index 0, the last name
+		//at index 20, the first name
+		//at index 40, the word PRESENT or ABSENT
+		//ADDED CHALLENGE:
+		//if last name or first name is longer than 20 characters, 
+		//cut off the last three letters and replace with "..."
+	
 	public String getReportString() {
-		// TODO Auto-generated method stub
-		return null;
+		String output = lastName;
+		while(output.length() < 20) {
+			output += " ";
+		}
+			output += firstName;
+		while(output.length() < 40) {
+			output += " ";
+		}
+			if(isHere) {
+				output += "PRESENT";
+				return output;
+			}
+		output += "ABSENT";	
+		return output;
 	}
 
 }
