@@ -2,7 +2,7 @@ package attendance;
 
 public class Student implements Attendee {
 	
-	private boolean isHere = false;
+	private boolean isHere;
 	private String firstName;
 	private String lastName;
 	
@@ -11,6 +11,7 @@ public class Student implements Attendee {
 	public Student(String first, String last) {
 		this.firstName = first;
 		this.lastName = last;
+		isHere = false;
 	}
 
 	public boolean isPresent() {
@@ -21,7 +22,7 @@ public class Student implements Attendee {
 	}
 
 	public void setPresent(boolean present) {
-		isHere = present;
+		this.isHere = present;
 	}
 
 	public String getFirstName() {
@@ -33,17 +34,16 @@ public class Student implements Attendee {
 	}
 //work on case sensitive could use toLowerCase to compare the two
 	public boolean mathces(String first, String last) {
-		if(first == firstName && last == lastName)
+		return first.toLowerCase().equals(firstName.toLowerCase()) && last.toLowerCase().equals(lastName.toLowerCase());
+		/*if(first == firstName && last == lastName)
 			return true;
 		
 		return false;
+		*/
 	}
 
 	public boolean matches(String last) {
-		if(last == lastName)
-			return true;
-		
-		return false;
+		return last.toLowerCase().equals(lastName.toLowerCase());
 	}
 
 	//returns three words separated by 20 spaces: 
@@ -73,10 +73,10 @@ public class Student implements Attendee {
 			output += " ";
 		}
 			if(isHere) {
-				output += "PRESENT";
+				output += "PRESENT\n";
 				return output;
 			}
-		output += "ABSENT";	
+		output += "ABSENT\n";	
 		return output;
 	}
 
