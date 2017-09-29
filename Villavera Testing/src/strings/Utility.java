@@ -5,7 +5,7 @@ package strings;
 
 public class Utility{
 
-  private static Scanner inputSource = new Scanner(System.in);
+ // private static Scanner inputSource = new Scanner(System.in);
   
 
   public static void main(String[] args){
