@@ -7,14 +7,23 @@ public class ArraysMain {
 	private String[] testArray;
 	private int[] intRay;
 	
-	
 	public ArraysMain() {
-		intRay = new int[1000];
-//		populate(intRay);
+		intRay = new int[100];
+
+		int[] consecTest = {1,2,3,8,9,10,45,46,47};
+		
+//  	populate(intRay);
 //		checkOccurences(intRay,3,18);
-		populate1ToN(intRay);
-		shuffle(intRay);
-		System.out.println(Arrays.toString(intRay));
+//		populate1ToN(intRay);
+//		shuffle(intRay);
+//		System.out.println(Arrays.toString(intRay));
+//		System.out.println(Arrays.toString(reverseOrder(intRay)));
+//		System.out.println(Integer.toString(countLessThan(intRay, 2)));
+//		frontToBack(intRay);
+//		System.out.println(Arrays.toString(intRay));
+//		cycleThrough(intRay, 2);
+//		System.out.println(Arrays.toString(intRay));
+		System.out.println(Integer.toString(longestConsecutiveSequence(consecTest)));
 	}
 	
 	private void shuffle(int[] arr) {
@@ -23,6 +32,128 @@ public class ArraysMain {
 		}
 	}
 
+	/**
+	 * Returns two pieces of information data[0] which is the length of the 
+	 * longest sequence
+	 * and data[1] which is the position where the sequence begins
+	 * @param arr
+	 * @return
+	 */
+	
+	
+	public int[] longestConsecSeqAndPos(int[] arr) {
+		int[] output = new int [2];
+		output[0] = longestConsecutiveSequence(arr);
+		output[1] = position(arr);
+	}
+	
+	public int position(int[] arr) {
+		int longestLength = 0;
+		int pos = 0;
+		for(int i = 0; i < arr.length; i++) {
+			if(longestLength < consecutiveLength(arr, i)) {
+				longestLength = consecutiveLength(arr,i);
+				pos = i;
+			}
+		}
+		return pos;
+	}
+	
+	
+	/**
+	 * returns the length of the longest sequence of consecutive integers in arr
+	 * For example lCS({1,2,3,7,8,9,10}) returns 4 because 7,8,9,10 is 4 integers long
+	 */
+	
+	public int longestConsecutiveSequence(int[] arr) {
+		int longestLength = 0;
+		for(int i = 0; i < arr.length; i++) {
+			if(longestLength < consecutiveLength(arr, i)) {
+				longestLength = consecutiveLength(arr,i);
+			}
+		}
+		return longestLength;
+	}
+	
+	/**
+	 * returns true if arr[pos] and arr[pos+1] are sequential
+	 * @param arr
+	 * @param pos
+	 * @return
+	 */
+	
+	public boolean nextElementIsInSequence(int[] arr, int pos) {
+		if(pos+1 == arr.length) {
+			return false;
+		}
+		return arr[pos]+1 == arr[pos+1];
+	}
+	
+	/**
+	 * returns the length of the sequence starting at index pos
+	 * example: cL({1,2,3,2,3},3) returns 2
+	 * @param arr
+	 * @param pos
+	 * @return
+	 */
+	
+	public int consecutiveLength(int[] arr, int pos) {
+		int output = 0;
+		
+		while(nextElementIsInSequence(arr, pos)) {
+			output++;
+			pos++;
+		}
+		
+		return output;
+	}
+	
+	
+	public void cycleThrough(int[] arr, int n) {
+		for(int i = 0; i < n;i++) {
+			frontToBack(arr);
+		}
+	}
+	
+	
+	public void frontToBack(int[] arr) {
+		int firstValue = arr[0];
+		for(int i = 0; i < arr.length-1; i++) {
+			arr[i] = arr[i+1];
+		}
+		arr[arr.length-1] = firstValue;
+	}	
+	
+	public int[] reverseOrder(int[] arr) {
+		int[] output = new int[arr.length];
+		for(int i = 0; i < arr.length;i++) {
+			output[i] = arr[arr.length-1-i];
+		}
+		return output;
+	}
+	
+	public int countLessThan(int[] arr, int n) {
+		int output = 0;
+		for(int i = 0; i < arr.length;i++) {
+			if(arr[i] < n) {
+				output++;
+			}
+		}
+		return output;
+	}
+	
+	/*
+	 * NOT LOOKING FOR INDEXES, ONLY VALUES 
+	 * public int countLessThan(int[] arr, int n) {
+		int output = 0;
+		for(int value: arr){
+			if(value < n)count++;
+		}
+		return output;
+	}
+	 */
+	
+	
 	private void swap(int[] arr, int i, int j) {
 		int placeholder = arr[i];
 		arr[i] = arr[j];
