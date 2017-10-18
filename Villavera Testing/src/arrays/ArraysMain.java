@@ -8,22 +8,16 @@ public class ArraysMain {
 	private int[] intRay;
 	
 	public ArraysMain() {
-		intRay = new int[100];
-
-		int[] consecTest = {1,2,3,8,9,10,45,46,47};
+//		int[] consecTest1 = {1,2,3,6,7,8,9,10,11,45,46,47};
+//		int[] consecTest2 = {10,11,12,13,14,15,6,7,8,9,10,11,45,46,47};
+		int[] randomRolls = new int[1000];
+		populate(randomRolls);
 		
-//  	populate(intRay);
-//		checkOccurences(intRay,3,18);
-//		populate1ToN(intRay);
-//		shuffle(intRay);
-//		System.out.println(Arrays.toString(intRay));
-//		System.out.println(Arrays.toString(reverseOrder(intRay)));
-//		System.out.println(Integer.toString(countLessThan(intRay, 2)));
-//		frontToBack(intRay);
-//		System.out.println(Arrays.toString(intRay));
-//		cycleThrough(intRay, 2);
-//		System.out.println(Arrays.toString(intRay));
-		System.out.println(Integer.toString(longestConsecutiveSequence(consecTest)));
+//		System.out.println("The longest sequence in the first test is " + longestConsecutiveSequence(consecTest1));
+//		System.out.println("The longest sequence in the second test is " + longestConsecutiveSequence(consecTest2));
+		int[] result = longestConsecSeqAndPos(randomRolls);
+		System.out.println("The longest sequence of dice rolls is " + result[0] +
+				" it happened on the " + (result[1]+1) +"th roll. Starting with a roll of "+randomRolls[result[1]]+".");
 	}
 	
 	private void shuffle(int[] arr) {
@@ -45,6 +39,7 @@ public class ArraysMain {
 		int[] output = new int [2];
 		output[0] = longestConsecutiveSequence(arr);
 		output[1] = position(arr);
+		return output;
 	}
 	
 	public int position(int[] arr) {
