@@ -15,9 +15,10 @@ public class ArraysMain {
 		
 //		System.out.println("The longest sequence in the first test is " + longestConsecutiveSequence(consecTest1));
 //		System.out.println("The longest sequence in the second test is " + longestConsecutiveSequence(consecTest2));
-		int[] result = longestConsecSeqAndPos(randomRolls);
-		System.out.println("The longest sequence of dice rolls is " + result[0] +
-				" it happened on the " + (result[1]+1) +"th roll. Starting with a roll of "+randomRolls[result[1]]+".");
+//		int[] result = longestConsecSeqAndPos(randomRolls);
+//		System.out.println("The longest sequence of dice rolls is " + result[0] +
+//				" it happened on the " + (result[1]+1) +"th roll. Starting with a roll of "+randomRolls[result[1]]+".");
+		repeat(randomRolls);
 	}
 	
 	private void shuffle(int[] arr) {
@@ -26,6 +27,17 @@ public class ArraysMain {
 		}
 	}
 
+	private void repeat(int[] arr) {
+		int counter = 1;
+		while(longestConsecSeqAndPos(arr)[position(arr)] != 11) {
+			int[] output = longestConsecSeqAndPos(arr);
+			System.out.println("The longest sequence of dice rolls is " + output[0] +
+					" it happened on the " + (output[1]+1) +"th roll. Starting with a roll of "+arr[output[1]]+".");
+			populate(arr);
+			counter++;
+		}
+	}
+	
 	/**
 	 * Returns two pieces of information data[0] which is the length of the 
 	 * longest sequence
