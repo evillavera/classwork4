@@ -17,6 +17,7 @@ public class Person {
 	private Borough home;
 	private Hobby hobby;
 	private Person[] friends;
+	private String nickname;
 	
 	
 	public Person(String firstName, String lastName, Borough home) {
@@ -26,6 +27,44 @@ public class Person {
 		this.hobby = Hobby.randomHobby();
 		friends = new Person[3];
 	}
+	
+	public static String createNickname(String name){
+		String nickname = "";
+		int secondVowelPsn = findSecond(name);
+		nickname = name.substring(0,secondVowelPsn);
+		return nickname;
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+		nickname = createNickname(firstName);
+	}
+	
+
+	private static int findSecond(String word){
+		boolean foundVowel = false;
+		word = word.toLowerCase();
+		int index = word.length();
+		for(int i = 0; i < word.length();i++){
+			if(word.substring(i,i+1).equals("a") || 
+				word.substring(i,i+1).equals("e") ||
+				word.substring(i,i+1).equals("i") ||
+				word.substring(i,i+1).equals("o") ||
+				word.substring(i,i+1).equals("u")){
+				if(!foundVowel){
+					foundVowel = true;
+				}else{
+					return i;
+				}	
+			}
+		}
+		return index;
+	}
+	
 	
 	/**
 	 * chooses friends from People based on who is of the same 
@@ -91,7 +130,7 @@ public class Person {
 	}
 
 	public String toString() {
-		return "My name is " + firstName+ " " + lastName + " and I live in "+ home + ". I like "+ hobby;
+		return "My name is " + firstName+ " " + lastName + " My nickname is " + nickname + " and I live in "+ home + ". I like "+ hobby;
 	}
 
 }
