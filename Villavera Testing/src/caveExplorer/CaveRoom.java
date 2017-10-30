@@ -156,7 +156,9 @@ public class CaveRoom {
 		CaveExplorer.currentRoom.enter();
 		//5. Set up doors
 		CaveRoom[][] c = CaveExplorer.caves;
-		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		c[5][3].setConnection(NORTH, c[4][3], new Door());
+		c[4][3].setConnection(WEST, c[4][2], new Door());
+		c[4][3].setConnection(EAST, c[4][4], new Door());
 	}
 	
 	public String getDescription() {
