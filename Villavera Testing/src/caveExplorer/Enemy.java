@@ -1,8 +1,10 @@
 package caveExplorer;
 
-public class Princess {
+public class Enemy extends NPC{
 
-	public Princess() {
+	private int hp;
+	
+	public Enemy() {
 		// TODO Auto-generated constructor stub
 	}
 
