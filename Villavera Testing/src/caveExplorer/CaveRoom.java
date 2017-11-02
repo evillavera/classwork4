@@ -119,7 +119,7 @@ public class CaveRoom {
 	 */
 	
 	public String validKeys() {
-		return "wdsa";
+		return "wdsa" ;
 	}
 	
 	/**
