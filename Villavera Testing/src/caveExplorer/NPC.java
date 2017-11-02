@@ -83,8 +83,8 @@ package caveExplorer;
 	public void act() {
 		if(active) {
 			int[] move = calculateMovement();
-			int newRow = currentRow + move[0];
-			int newCol = currentCol + move[1];
+			int newRow = move[0];
+			int newCol = move[1];
 			setPosition(newRow, newCol);
 		}
 		
