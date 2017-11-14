@@ -12,7 +12,7 @@ public class Animal {
 	public static void main(String[] args) {
 		
 		for(int i = 0; i < 10; i++) {
-			Animal someAnimal
+			Animal someAnimal = new Animal();
 		}
 
 	}
