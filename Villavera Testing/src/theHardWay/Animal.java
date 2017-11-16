@@ -64,7 +64,7 @@ public class Animal {
 		return age;
 	}
 	
-	public void increasingAge() {
+	public void increaseAge() {
 		age++;
 	}
 
