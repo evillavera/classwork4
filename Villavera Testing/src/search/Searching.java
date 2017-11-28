@@ -7,6 +7,7 @@ public class Searching {
 
 	Scanner in;
 	int[] numbers;
+	static int attempts;
 	public static final int HANDICAP= 10;
 	
 	public static void main(String[] args){
@@ -23,6 +24,7 @@ public class Searching {
 		for(int i=0; i<numbers.length; i++){
 			numbers[i]=Integer.parseInt(text[i]);
 		}
+		attempts = 0;
 		proceedWithSearch();
 	}
 
@@ -43,17 +45,31 @@ public class Searching {
 				+ "\n    Press 'enter' to begin.");
 		in.nextLine();
 
-		int index = search(numbers, target);
+		int index = binarySearch(numbers,0,numbers[numbers.length-1],target);
 
 		if(index!=-1){
-			System.out.println("The number "+target+" was found at index "+index+". Did the computer win?");
+			System.out.println("The number "+target+" was found at index "+index+". Did the computer win? With "+ attempts + ".");
 		}else{
 			System.out.println("The number "+target+" was not found in the file.");
 		}
 		
 	}
-
 	
+	public static int binarySearch(int[] searchThis, int startIndex, int endIndex, int target) {
+		int between = (startIndex + endIndex)/2;
+		if(searchThis[between] == target) {
+			attempts++;
+			return between;
+		}else if(searchThis[between] > target) {
+			attempts++;
+			binarySearch(searchThis,searchThis[between],searchThis[searchThis.length-1],target);
+		}else {
+			attempts++;
+			binarySearch(searchThis,searchThis[0],searchThis[between],target);
+		}
+		return -1;
+	}
+	  
 	private int search(int[] searchThis, int target) {
 		//TODO fill in the method body:
 		for(int i = 0;i < searchThis.length;i++) {
