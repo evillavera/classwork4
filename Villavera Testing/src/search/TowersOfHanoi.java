@@ -12,8 +12,20 @@ public class TowersOfHanoi {
 	 */
 	
 	public static void main(String[] args) {
-		
+		int disks = 3;
+		instructions(disks);
+	}
 
+	private static void instructions(int disks) {
+		if(disks == 1) {
+			 System.out.println("Move disk to destination");
+		}else if(disks%2==0){
+			System.out.println("Move to helper from start");
+			instructions();
+		}else {
+			System.out.println("Move to destination from start");
+			instructions();
+		}
 	}
 
 }
