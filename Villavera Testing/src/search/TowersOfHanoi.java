@@ -12,7 +12,7 @@ public class TowersOfHanoi {
 	 */
 	
 	public static void main(String[] args) {
-		int disks = 3;
+		int disks = 6;
 		String start = "A";
 		String helper = "B";
 		String end = "C";
