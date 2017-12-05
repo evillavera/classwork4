@@ -13,18 +13,20 @@ public class TowersOfHanoi {
 	
 	public static void main(String[] args) {
 		int disks = 3;
-		instructions(disks);
+		String start = "A";
+		String helper = "B";
+		String end = "C";
+		hanoi(disks, start, helper, end);
 	}
 
-	private static void instructions(int disks) {
+	private static void hanoi(int disks, String start, String help, String end) {
 		if(disks == 1) {
-			 System.out.println("Move disk to destination");
-		}else if(disks%2==0){
-			System.out.println("Move to helper from start");
-			instructions();
+			System.out.println(start + " to " + end);
 		}else {
-			System.out.println("Move to destination from start");
-			instructions();
+			//move everything above bottom disk
+			hanoi(disks - 1, start, end, help);
+			System.out.println(start + " to " + end);
+			hanoi(disks - 1, help, start, end);
 		}
 	}
 
